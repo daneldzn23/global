@@ -1,0 +1,164 @@
+@import "tailwindcss";
+@import "./fonts.css";
+
+@theme {
+  --font-sans: "Effra", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+
+  --color-ink: #0A1119;
+  --color-ink-2: #0E1721;
+  --color-surface: #111E2A;
+  --color-surface-2: #152534;
+  --color-text: #E6EDF3;
+  --color-muted: #8DA0B2;
+  --color-muted-2: #61748A;
+  --color-blue: #2E9BE6;
+  --color-blue-bright: #5FB7F6;
+  --color-green: #4FB84F;
+  --color-tick: #35D6A4;
+  --color-lite: #F2F5F8;
+  --color-lite-line: #E1E7ED;
+  --color-ink-on-lite: #0B141C;
+  --color-muted-on-lite: #51637A;
+  --color-blue-on-lite: #1E7BC4;
+}
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  margin: 0;
+  background: var(--color-lite);
+  color: var(--color-ink-on-lite);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-inline: clamp(20px, 5vw, 56px);
+}
+
+/* Type. Plain, single-weight headings — no two-tone, no accent clause. */
+
+.h1 {
+  font-size: clamp(2.25rem, 4.6vw, 3.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.022em;
+  font-weight: 500;
+  margin: 0;
+}
+
+.h2 {
+  font-size: clamp(1.625rem, 2.8vw, 2.25rem);
+  line-height: 1.16;
+  letter-spacing: -0.018em;
+  font-weight: 500;
+  margin: 0;
+}
+
+.h3 {
+  font-size: 1.0625rem;
+  line-height: 1.35;
+  font-weight: 500;
+  margin: 0;
+}
+
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  max-width: 54ch;
+}
+
+.body {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  max-width: 58ch;
+}
+
+.data {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* Structural gradient: a section ground, never a glow behind a card. */
+
+/* The dark band eases in from the tint above it rather than cutting hard. */
+.ground-dark {
+  background:
+    linear-gradient(180deg, #0A1119 0%, #0E1721 60%, #0A1119 100%);
+  color: var(--color-text);
+  position: relative;
+}
+.ground-dark::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 96px;
+  background: linear-gradient(180deg, var(--color-lite) 0%, rgb(10 17 25 / 0) 100%);
+  opacity: .18;
+  pointer-events: none;
+}
+
+.ground-tint {
+  background: linear-gradient(180deg, #FFFFFF 0%, var(--color-lite) 100%);
+}
+
+/* A hairline that fades out, used to separate bands without boxing them in.
+   display:block + explicit height, or the UA's default hr border paints a
+   solid slab over the gradient. */
+.hairline {
+  display: block;
+  height: 1px;
+  min-height: 1px;
+  border: 0;
+  margin: 0;
+  background-image: linear-gradient(90deg,
+    rgb(11 20 28 / 0.16) 0%,
+    rgb(11 20 28 / 0.07) 45%,
+    rgb(11 20 28 / 0) 100%);
+}
+.ground-dark .hairline {
+  background-image: linear-gradient(90deg,
+    rgb(230 237 243 / 0.18) 0%,
+    rgb(230 237 243 / 0.07) 45%,
+    rgb(230 237 243 / 0) 100%);
+}
+
+/* Real UI, cropped and embedded in the copy flow — not floated in a device
+   frame. The crop is the point: you see the working part, full-bleed to its
+   own edge, with a hard shadow grounding it. */
+
+.ui-crop {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--color-surface);
+  box-shadow:
+    0 1px 0 rgb(230 237 243 / 0.10) inset,
+    0 24px 60px -28px rgb(0 0 0 / 0.85);
+}
+.ui-crop img {
+  display: block;
+  width: 100%;
+}
+.ui-crop--tall img {
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: left top;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .55s cubic-bezier(.16,1,.3,1), transform .55s cubic-bezier(.16,1,.3,1);
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
