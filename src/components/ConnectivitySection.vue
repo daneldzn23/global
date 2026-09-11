@@ -1,9 +1,11 @@
 <script setup>
+const base = import.meta.env.BASE_URL
+
 const venues = [
   { file: 'cme-group.png', alt: 'CME', width: '90px' },
   { file: 'nasdaq.png', alt: 'Nasdaq', width: '82px' },
   { file: 'nyse.png', alt: 'NYSE', width: '38px' },
-]
+].map((v) => ({ ...v, mask: `url(${base}images/partner-logos/${v.file})` }))
 
 const columns = [
   {
@@ -41,8 +43,8 @@ const columns = [
               class="venue-mark h-5"
               :style="{
                 width: v.width,
-                '-webkit-mask-image': `url(/images/partner-logos/${v.file})`,
-                maskImage: `url(/images/partner-logos/${v.file})`,
+                '-webkit-mask-image': v.mask,
+                maskImage: v.mask,
               }"
             />
           </div>

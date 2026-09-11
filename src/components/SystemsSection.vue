@@ -1,19 +1,21 @@
 <script setup>
+const base = import.meta.env.BASE_URL
+
 const systems = [
   {
     name: 'Order Management System',
     desc: 'Routing, execution, and full order lifecycle across multi-asset desks. Built for institutional volume.',
-    image: '/images/img-5.webp',
+    image: `${base}images/img-5.webp`,
   },
   {
     name: 'Risk Manager',
     desc: 'Pre-trade and real-time controls across accounts, desks, and books.',
-    image: '/images/img-5-2.webp',
+    image: `${base}images/img-5-2.webp`,
   },
   {
     name: 'Home & Mobile Broker',
     desc: 'White-labeled web and mobile trading. Your brand on the front, our engineering underneath.',
-    image: '/images/img-5-1.webp',
+    image: `${base}images/img-5-1.webp`,
   },
 ]
 </script>

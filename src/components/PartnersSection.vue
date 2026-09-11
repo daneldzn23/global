@@ -24,7 +24,7 @@ const files = [
 ]
 
 const logos = files.map(([file, alt]) => ({
-  src: `/images/partner-logos/${file}`,
+  src: `${import.meta.env.BASE_URL}images/partner-logos/${file}`,
   alt,
   title: alt,
 }))
