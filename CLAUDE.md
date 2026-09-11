@@ -10,17 +10,13 @@ Profit; also OMS/Risk Manager/white-label broker products). Single page,
 international audience, real persona-routed CTAs (trader/broker/prop
 firm/careers) — not the existing Brazil-market nelogica.com.br site.
 
-**Copy is locked — and only the copy.**
-[reference/nelogica-global-V1.4.html](reference/nelogica-global-V1.4.html)
-is an approved-copy draft: every section's text is final and reused 1:1
-(see `docs/product-requirements.md`), and it's the source for the brand
-tokens/font. It is **not** a layout reference — section order,
-composition, and IA are open. Do not re-skin its sections; that just
-reproduces it. The job is a from-scratch **visual redesign**: V1.4's
-execution reads as generic AI-landing-page template (stock trader photo,
-rainbow-highlight headline, glass cards, logo marquee — see `DESIGN.md`),
-and the goal is a distinctive, non-templated design using the same
-brand tokens.
+**Copy is locked.** [reference/nelogica-global-V1.4.html](reference/nelogica-global-V1.4.html)
+is an approved-copy draft — every section's text is final and reused
+1:1 (see `docs/product-requirements.md`). The job is a from-scratch
+**visual redesign** of that content: V1.4's execution reads as generic
+AI-landing-page template (stock trader photo, rainbow-highlight
+headline, glass cards, logo marquee — see `DESIGN.md`), and the goal is
+a distinctive, non-templated design using the same brand tokens.
 
 Design-first: no source code yet. `src/` will be populated once
 implementation starts.

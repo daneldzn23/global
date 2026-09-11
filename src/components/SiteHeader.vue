@@ -1,27 +1,49 @@
 <script setup>
-import { ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 
 const open = ref(false)
+const scrolled = ref(false)
 const links = [
   { href: '#platforms', label: 'Platforms' },
   { href: '#partners', label: 'Partners' },
   { href: '#careers', label: 'Careers' },
 ]
+
+function onScroll() {
+  scrolled.value = window.scrollY > 40
+}
+
+onMounted(() => {
+  onScroll()
+  window.addEventListener('scroll', onScroll, { passive: true })
+})
+onUnmounted(() => {
+  window.removeEventListener('scroll', onScroll)
+})
 </script>
 
 <template>
-  <header class="sticky top-0 z-[100] bg-ink/85 backdrop-blur-[6px]">
+  <header class="fixed inset-x-0 top-0 z-[100]">
+    <!-- backdrop-filter on <header> itself would make it a containing block
+         for the fixed-position mobile nav panel below, collapsing that
+         panel's height to the header's own 68px. Isolating the blur to this
+         absolutely-positioned backdrop layer avoids that trap. -->
+    <div
+      class="absolute inset-0 -z-10 transition-colors duration-300"
+      :class="scrolled || open ? 'bg-ink/80 backdrop-blur-md' : 'bg-transparent'"
+    />
+
     <div class="wrap flex h-[68px] items-center justify-between">
       <a href="#" aria-label="Nelogica home" class="shrink-0">
         <img
-          class="h-[21px] w-auto"
-          src="/images/brand/nelogica-logo.png"
+          class="h-[30px] w-auto"
+          src="/images/brand/nelogica-logo.svg"
           alt="Nelogica"
         />
       </a>
 
       <button
-        class="-mr-2 flex h-10 w-10 items-center justify-center text-text md:hidden"
+        class="-mr-2 flex h-10 w-10 items-center justify-center text-white md:hidden"
         :aria-expanded="open"
         aria-controls="site-menu"
         aria-label="Toggle menu"
@@ -38,7 +60,7 @@ const links = [
         class="flex items-center gap-8
                max-md:fixed max-md:inset-x-0 max-md:top-[68px] max-md:bottom-0
                max-md:flex-col max-md:items-stretch max-md:gap-0
-               max-md:bg-ink max-md:px-[clamp(20px,5vw,56px)] max-md:pt-1
+               max-md:bg-ink max-md:backdrop-blur-md max-md:px-[clamp(20px,5vw,56px)] max-md:pt-1
                max-md:transition-opacity max-md:duration-200"
         :class="open
           ? 'max-md:pointer-events-auto max-md:opacity-100'
@@ -48,8 +70,8 @@ const links = [
           v-for="l in links"
           :key="l.href"
           :href="l.href"
-          class="text-[15px] font-medium text-muted transition-colors hover:text-text
-                 max-md:border-b max-md:border-white/10 max-md:py-5 max-md:text-[16px]"
+          class="text-[15px] font-medium text-white/80 hover:text-white transition-colors
+                 max-md:border-b max-md:border-white/10 max-md:py-5 max-md:text-[16px] max-md:text-text"
           @click="open = false"
         >{{ l.label }}</a>
 

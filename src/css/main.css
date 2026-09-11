@@ -28,10 +28,16 @@ html { scroll-behavior: smooth; }
   html { scroll-behavior: auto; }
 }
 
+/* The header is fixed (not sticky), so it's out of document flow and every
+   in-page anchor target needs this or the fixed bar covers its top ~68px. */
+main > section[id] {
+  scroll-margin-top: 68px;
+}
+
 body {
   margin: 0;
-  background: var(--color-ink);
-  color: var(--color-text);
+  background: var(--color-lite);
+  color: var(--color-ink-on-lite);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
@@ -42,23 +48,22 @@ body {
   padding-inline: clamp(20px, 5vw, 56px);
 }
 
-/* Type. Plain, single-weight headings — no two-tone, no accent clause. */
-
-/* No `margin: 0` here — it outranks Tailwind's mb-* utilities and silently
-   discards any spacing set in the markup. Headings are already reset by
-   Tailwind's preflight. */
+/* No `margin: 0` on these — it outranks Tailwind's mb-* utilities and
+   silently discards any spacing set in the markup (learned this the
+   expensive way last round). Tailwind's preflight already zeroes heading
+   margins; let mb-* utilities in the markup control spacing from here. */
 
 .h1 {
-  font-size: clamp(2.25rem, 4.6vw, 3.5rem);
-  line-height: 1.08;
-  letter-spacing: -0.022em;
+  font-size: clamp(2.5rem, 5.2vw, 4.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
   font-weight: 500;
 }
 
 .h2 {
-  font-size: clamp(1.625rem, 2.8vw, 2.25rem);
-  line-height: 1.16;
-  letter-spacing: -0.018em;
+  font-size: clamp(1.75rem, 3.2vw, 2.75rem);
+  line-height: 1.12;
+  letter-spacing: -0.016em;
   font-weight: 500;
 }
 
@@ -81,25 +86,79 @@ body {
 }
 
 .data {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.01em;
 }
 
-/* Two dark grounds. Section rhythm comes from a slight shift in depth,
-   not from flipping between a light and a dark theme. */
+/* stripe.com's actual hero treatment: a bold, decorative gradient-mesh —
+   not a restrained structural tint. Built from the real brand blue/green/
+   tick colors instead of Stripe's purple/orange, so it reads as Nelogica's
+   own accent rather than a copy. This is the one place color is allowed to
+   be loud; every other section stays plain. */
+/* Full-bleed video hero: real Nelogica footage, not a generated asset, so
+   the anti-stock-photo rule in DESIGN.md doesn't apply here. A dark scrim
+   keeps the headline legible over whatever the footage is doing. */
+.video-hero {
+  position: relative;
+  background: var(--color-ink);
+  overflow: hidden;
+}
+.video-hero video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;
+}
+.video-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgb(10 17 25 / 0.72) 0%, rgb(10 17 25 / 0.55) 45%, rgb(10 17 25 / 0.88) 88%, var(--color-ink) 100%),
+    linear-gradient(100deg, rgb(10 17 25 / 0.55) 0%, rgb(10 17 25 / 0.15) 55%);
+  pointer-events: none;
+}
 
-.ground-base {
+/* Dark bands, the way stripe.com drops dark developer-infrastructure
+   sections deep in an otherwise light page. Numbers and connectivity both
+   use this ground for a matching look, even with a light section between
+   them. */
+.ground-dark {
   background: var(--color-ink);
   color: var(--color-text);
 }
 
-.ground-raised {
+.ground-tint {
+  background: var(--color-lite);
+}
+
+/* Floating product screenshots with a real drop shadow — the stripe.com
+   "dashboard card" move — instead of a full-bleed crop pinned to the
+   viewport edge. */
+.float-card {
+  position: relative;
+  border-radius: 12px;
   background: var(--color-surface);
-  color: var(--color-text);
   box-shadow:
-    inset 0 1px 0 rgb(230 237 243 / 0.06),
-    inset 0 -1px 0 rgb(230 237 243 / 0.06);
+    0 2px 6px rgb(11 20 28 / 0.06),
+    0 24px 48px -16px rgb(11 20 28 / 0.22),
+    0 1px 0 rgb(255 255 255 / 0.06) inset;
+}
+/* Over dark grounds (e.g. the video hero) the dark shadow disappears —
+   a light halo and a hairline border keep the card readable as a distinct
+   surface instead of one against the ambient darkness. */
+.float-card--on-dark {
+  box-shadow:
+    0 24px 64px -20px rgb(0 0 0 / 0.6),
+    0 0 0 1px rgb(255 255 255 / 0.08);
+}
+.float-card img {
+  display: block;
+  width: 100%;
+  border-radius: 12px;
 }
 
 /* A hairline that fades out, used to separate bands without boxing them in.
@@ -112,32 +171,15 @@ body {
   border: 0;
   margin: 0;
   background-image: linear-gradient(90deg,
-    rgb(230 237 243 / 0.20) 0%,
-    rgb(230 237 243 / 0.08) 45%,
+    rgb(11 20 28 / 0.16) 0%,
+    rgb(11 20 28 / 0.07) 45%,
+    rgb(11 20 28 / 0) 100%);
+}
+.ground-dark .hairline {
+  background-image: linear-gradient(90deg,
+    rgb(230 237 243 / 0.18) 0%,
+    rgb(230 237 243 / 0.07) 45%,
     rgb(230 237 243 / 0) 100%);
-}
-
-/* Real UI, cropped and embedded in the copy flow — not floated in a device
-   frame. The crop is the point: you see the working part, full-bleed to its
-   own edge, with a hard shadow grounding it. */
-
-.ui-crop {
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-  background: var(--color-surface);
-  box-shadow:
-    0 1px 0 rgb(230 237 243 / 0.10) inset,
-    0 24px 60px -28px rgb(0 0 0 / 0.85);
-}
-.ui-crop img {
-  display: block;
-  width: 100%;
-}
-.ui-crop--tall img {
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  object-position: left top;
 }
 
 .reveal {

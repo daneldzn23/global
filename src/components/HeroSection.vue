@@ -1,25 +1,22 @@
-<script setup>
-import ImageSlot from './ImageSlot.vue'
-</script>
-
 <template>
-  <section class="ground-base pt-20 pb-0 sm:pt-28">
-    <div class="wrap">
-      <p class="text-[15px] font-medium text-blue-bright mb-5">
-        Investment technology since 2003
-      </p>
+  <section class="video-hero">
+    <video autoplay muted loop playsinline poster="/images/platforms/blackarrow-screenshot.webp">
+      <source src="/videos/home-video1.webm" type="video/webm" />
+    </video>
 
-      <h1 class="h1 text-text max-w-[19ch] mb-10">
-        We build trading technology from the infrastructure up.
+    <div class="wrap relative z-10 pt-20 sm:pt-28 pb-24 sm:pb-32 flex flex-col items-center text-center">
+      <h1 class="h1 text-text max-w-[26ch] mb-7">
+        We build trading technology
+        <span class="text-muted">from the infrastructure up.</span>
       </h1>
 
-      <p class="lead text-muted mb-9">
+      <p class="lead text-muted mb-9 max-w-[64ch]">
         Nelogica is a trading technology company. We build the trading platforms
         and order management systems that banks, brokers and prop firms run on,
         connected to the world's major exchanges.
       </p>
 
-      <div class="flex flex-wrap items-center gap-x-7 gap-y-3 mb-16 sm:mb-20">
+      <div class="flex flex-wrap items-center justify-center gap-x-7 gap-y-3">
         <a
           href="#platforms"
           class="rounded-md bg-blue px-5 py-3 text-[15px] font-medium text-white transition-colors hover:bg-blue-bright"
@@ -29,10 +26,6 @@ import ImageSlot from './ImageSlot.vue'
           class="text-[15px] font-medium text-blue-bright transition-colors hover:text-text"
         >Talk to our team →</a>
       </div>
-    </div>
-
-    <div class="mx-auto max-w-[1400px] px-0 sm:px-6">
-      <ImageSlot dark ratio="1500 / 843" name="hero — BlackArrow terminal" />
     </div>
   </section>
 </template>

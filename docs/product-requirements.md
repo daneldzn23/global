@@ -9,11 +9,7 @@ avoid and why. If a section needs new copy (e.g. an image alt text, a
 microcopy tweak required by a new layout), flag it rather than
 silently rewriting approved lines.
 
-## Sections — locked copy
-
-**The copy in each section below is locked. The order they are listed in
-is V1.4's and is not binding** — section sequence and grouping are open
-design decisions; see `../DESIGN.md`.
+## Sections (in page order) — locked copy
 
 ### 1. Nav
 Logo (Nelogica wordmark) · links: Platforms, Partners, Careers ·

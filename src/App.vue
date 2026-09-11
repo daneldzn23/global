@@ -1,6 +1,7 @@
 <script setup>
 import SiteHeader from './components/SiteHeader.vue'
 import HeroSection from './components/HeroSection.vue'
+import NumbersSection from './components/NumbersSection.vue'
 import PlatformsSection from './components/PlatformsSection.vue'
 import ConnectivitySection from './components/ConnectivitySection.vue'
 import SystemsSection from './components/SystemsSection.vue'
@@ -20,6 +21,7 @@ import SiteFooter from './components/SiteFooter.vue'
 
   <main id="main">
     <HeroSection />
+    <NumbersSection />
     <PlatformsSection />
     <ConnectivitySection />
     <SystemsSection />

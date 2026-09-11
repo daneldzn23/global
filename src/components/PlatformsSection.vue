@@ -1,69 +1,84 @@
-<script setup>
-import ImageSlot from './ImageSlot.vue'
-</script>
-
 <template>
-  <section id="platforms" class="ground-raised pt-24 pb-24 sm:pt-28 sm:pb-28">
-    <div class="wrap">
-      <h2 class="h2 text-text max-w-[20ch] mb-4">
+  <section id="platforms" class="ground-tint pt-12 pb-12 sm:pt-14 sm:pb-14">
+    <div v-reveal class="wrap">
+      <h2 class="h2 text-ink-on-lite max-w-[20ch] mx-auto mb-4 text-center">
         Our flagship platforms.
       </h2>
-      <p class="lead text-muted mb-16 sm:mb-20">
+      <p class="lead text-muted-on-lite mx-auto mb-16 text-center sm:mb-20">
         Different markets, different traders, one engineering standard.
       </p>
 
-      <!-- BlackArrow -->
-      <div v-reveal class="grid items-center gap-10 lg:grid-cols-[minmax(0,26rem)_1fr] lg:gap-16">
-        <div>
+      <!-- BlackArrow: full-bleed image card, body overlaid on the left -->
+      <div
+        class="float-card float-card--on-dark relative mb-6 flex min-h-[320px] flex-col justify-start overflow-hidden p-8 sm:min-h-[440px] sm:justify-center sm:p-11"
+        style="box-shadow: none"
+      >
+        <img
+          class="absolute inset-0 h-full w-full object-cover object-[150%_center] sm:object-[85%_center]"
+          src="/images/platforms/blackarrow_home.webp"
+          alt="BlackArrow terminal"
+        />
+        <div class="relative z-10 flex flex-col">
           <img
-            class="mb-6 h-[22px] w-auto brightness-0 invert"
-            src="/images/platforms/blackarrow-logo.png"
+            class="mb-4 self-start brightness-0 invert"
+            style="width: auto; height: 42px; border-radius: 0"
+            src="/images/platforms/blackarrow-logo.svg"
             alt="BlackArrow"
           />
-          <h3 class="h3 text-text mb-3">Every market, one workspace.</h3>
-          <p class="body text-muted">
+          <h3 class="h3 text-text mb-2" style="font-size: 1.25rem">Every market, one workspace.</h3>
+          <p class="body text-muted" style="max-width: 32ch; font-size: 1rem">
             A multi-asset trading platform for futures, equities and OTC
             instruments, engineered for ultra-low latency, depth and control.
           </p>
         </div>
-        <ImageSlot dark ratio="1500 / 843" name="BlackArrow terminal" />
       </div>
 
-      <hr class="hairline mt-16 mb-14 sm:mt-20 sm:mb-16" />
-
-      <!-- Bookmap: wide and shallow, so it runs full width under the copy -->
-      <div v-reveal>
-        <div class="mb-9 max-w-[46ch]">
+      <!-- Bookmap + Profit: two-up row of cards, media on top, body below -->
+      <div class="grid gap-6 sm:grid-cols-2">
+        <div
+          class="float-card overflow-hidden flex flex-col pt-10 px-10"
+          style="background: #fff; box-shadow: none; border: 1px solid var(--color-lite-line)"
+        >
           <img
-            class="mb-6 h-[19px] w-auto"
-            src="/images/platforms/bookmap-logo.png"
+            class="mb-4 self-start"
+            style="width: auto; height: 22px; border-radius: 0"
+            src="/images/platforms/bookmap-logo-dark.svg"
             alt="Bookmap"
           />
-          <h3 class="h3 text-text mb-3">Order flow, made visible.</h3>
-          <p class="body text-muted">
+          <h3 class="h3 text-ink-on-lite mb-2" style="font-size: 1.25rem">Order flow, made visible.</h3>
+          <p class="body text-muted-on-lite mb-10 max-w-[38ch]" style="font-size: 1rem">
             Traders use Bookmap to read liquidity and market depth as it happens.
           </p>
-        </div>
-        <ImageSlot dark ratio="913 / 412" name="Bookmap heatmap" />
-      </div>
-
-      <hr class="hairline mt-16 mb-14 sm:mt-20 sm:mb-16" />
-
-      <!-- Profit -->
-      <div v-reveal class="grid items-center gap-10 lg:grid-cols-[minmax(0,24rem)_1fr] lg:gap-16">
-        <div>
           <img
-            class="mb-6 h-[26px] w-auto"
-            src="/images/platforms/profit-logo.png"
+            class="mt-auto block w-[82%] self-center"
+            style="border-radius: 8px 8px 0 0"
+            src="/images/platforms/bookmap-screenshot.webp"
+            alt="Bookmap heatmap"
+          />
+        </div>
+
+        <div
+          class="float-card overflow-hidden flex flex-col pt-10 px-10"
+          style="background: #fff; box-shadow: none; border: 1px solid var(--color-lite-line)"
+        >
+          <img
+            class="mb-4 self-start"
+            style="width: auto; height: 52px; border-radius: 0"
+            src="/images/platforms/profit-logo-dark.svg"
             alt="Profit"
           />
-          <h3 class="h3 text-text mb-3">Where Nelogica started.</h3>
-          <p class="body text-muted">
+          <h3 class="h3 text-ink-on-lite mb-2" style="font-size: 1.25rem">Where Nelogica started.</h3>
+          <p class="body text-muted-on-lite mb-10 max-w-[38ch]" style="font-size: 1rem">
             Built in 2003, Profit is the most used trading platform in Latin
             America and helped establish Brazil's trading culture.
           </p>
+          <img
+            class="mt-auto block w-[82%] self-center"
+            style="border-radius: 8px 8px 0 0"
+            src="/images/platforms/profit-screenshot.webp"
+            alt="Profit — multi-device"
+          />
         </div>
-        <ImageSlot ratio="1300 / 841" name="Profit — multi-device" />
       </div>
     </div>
   </section>

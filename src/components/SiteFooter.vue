@@ -14,7 +14,7 @@ const columns = [
       { label: 'Order Management System', href: '#systems' },
       { label: 'Risk Manager', href: '#systems' },
       { label: 'Home & Mobile Broker', href: '#systems' },
-      { label: 'Institutional offering', href: 'https://use.blackarrowtrading.com/b2b', external: true },
+      { label: 'Institutional offering', href: '#systems' },
     ],
   },
   {
@@ -28,13 +28,13 @@ const columns = [
 </script>
 
 <template>
-  <footer class="ground-base pb-10 pt-20">
-    <div class="wrap">
+  <footer class="ground-dark pb-10 pt-20">
+    <div v-reveal class="wrap">
       <div class="grid gap-14 pb-14 sm:grid-cols-[1.1fr_2fr]">
         <div>
           <img
-            class="mb-5 h-[21px] w-auto"
-            src="/images/brand/nelogica-logo.png"
+            class="mb-5 h-12 w-auto"
+            src="/images/brand/nelogica-logo.svg"
             alt="Nelogica"
           />
           <p class="max-w-[34ch] text-[14px] leading-relaxed text-muted">
@@ -45,13 +45,12 @@ const columns = [
 
         <div class="grid grid-cols-2 gap-10 sm:grid-cols-3">
           <div v-for="col in columns" :key="col.heading">
-            <h3 class="mb-5 text-[13px] font-medium text-text">{{ col.heading }}</h3>
+            <h3 class="mb-5 text-[13px] font-medium uppercase tracking-wide text-muted-2">{{ col.heading }}</h3>
             <ul class="flex flex-col gap-3">
               <li v-for="l in col.links" :key="l.label">
                 <a
                   :href="l.href"
-                  v-bind="l.external ? { target: '_blank', rel: 'noopener' } : {}"
-                  class="text-[14px] text-muted transition-colors hover:text-text"
+                  class="text-[14px] text-text transition-colors hover:text-blue-bright"
                 >{{ l.label }}</a>
               </li>
             </ul>
