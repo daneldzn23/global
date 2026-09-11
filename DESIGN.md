@@ -1,13 +1,19 @@
 # Design Direction
 
-Source of truth: [reference/nelogica-global-V1.4.html](reference/nelogica-global-V1.4.html)
+**Source of truth for copy only:**
+[reference/nelogica-global-V1.4.html](reference/nelogica-global-V1.4.html)
 — an approved-copy draft of this page. Its **copy is final and reused
-1:1** (see `docs/product-requirements.md`). Its **visual execution is
-the problem**: it reads as generic AI-template output — dark navy hero
-with a stock photo of a trader at monitors, bold sans headline with one
-blue-highlighted phrase, two pill buttons, thin-line eyebrow tag, glassy
-cards. That exact pattern is what this redesign must move away from,
-while staying on-brand.
+1:1** (see `docs/product-requirements.md`), and it is the authoritative
+source for the brand tokens and embedded Effra font files below.
+
+It is **not** a reference for layout, section order, composition, or
+information architecture. Its **visual execution is the problem**: it
+reads as generic AI-template output — dark navy hero with a stock photo
+of a trader at monitors, bold sans headline with one blue-highlighted
+phrase, two pill buttons, thin-line eyebrow tag, glassy cards. Do not
+design by re-skinning its sections one by one; that reproduces the same
+page with new paint. Take the copy and the tokens, and design the
+structure from scratch.
 
 ## Brand tokens (from V1.4 `:root`, real hex — treat as fixed)
 
@@ -24,10 +30,11 @@ while staying on-brand.
 - Font: **Effra** (weights 300/400/500/700 embedded in V1.4 as base64
   woff/ttf — real brand typeface, not a placeholder), fallback
   `system-ui, sans-serif`
-- Two registered surfaces: a dark mode (`--ink` family, used for
-  hero/stack/speed/careers) and a light mode (`--lite` family, used for
-  partners/about) — V1.4 already alternates between them section to
-  section
+- The page is **dark throughout** (`--ink` family). Section rhythm comes
+  from shifts in depth between `--ink` and `--ink-2`/`--surface`, not
+  from alternating light and dark themes. The `--lite` family is
+  retained in the token set for assets and future use, but the light
+  ground was tried and rejected as too bright.
 
 These are legitimate brand values (they came from the company's actual
 CSS, not screen-sampled), so the palette and typeface are **not** what
@@ -118,10 +125,11 @@ motion). No additional formal commitments at this time.
 - Platform assets (BlackArrow, Bookmap, Profit logos + screenshots)
   extracted to `public/images/platforms/`
 - Nelogica wordmark extracted to `public/images/brand/nelogica-logo.png`
-- Section structure/information architecture from V1.4 can be reused
-  as a starting skeleton (hero → numbers → platforms/stack → speed/
-  connectivity → partners → careers → contact/CTA → footer) — see
-  `docs/product-requirements.md`
+- Section **content** is listed in `docs/product-requirements.md`. The
+  order it happens to be listed in is V1.4's, and is **not** binding —
+  section sequence, grouping, and IA are open design decisions. (V1.4's
+  own order buried exchange connectivity, arguably the foundational
+  claim, in position 5 of 9.)
 
 ## Open questions
 

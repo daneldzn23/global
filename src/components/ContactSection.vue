@@ -7,12 +7,12 @@ const paths = [
 </script>
 
 <template>
-  <section id="contact" class="ground-tint py-24 sm:py-28">
+  <section id="contact" class="ground-base py-24 sm:py-28">
     <div class="wrap">
-      <h2 class="h2 text-ink-on-lite max-w-[16ch] mb-4">
+      <h2 class="h2 text-text max-w-[16ch] mb-4">
         Tell us what you're building.
       </h2>
-      <p class="lead text-muted-on-lite mb-14">
+      <p class="lead text-muted mb-14">
         Traders, brokers, and prop firms start with the path that fits — our team
         takes it from there.
       </p>
@@ -26,10 +26,10 @@ const paths = [
           class="group block"
         >
           <hr class="hairline mb-5" />
-          <span class="mb-2 block text-[13px] text-muted-on-lite">{{ p.note }}</span>
+          <span class="mb-2 block text-[13px] text-muted">{{ p.note }}</span>
           <span
             class="text-[17px] font-medium transition-colors"
-            :class="p.primary ? 'text-blue-on-lite' : 'text-ink-on-lite group-hover:text-blue-on-lite'"
+            :class="p.primary ? 'text-blue-bright' : 'text-text group-hover:text-blue-bright'"
           >
             {{ p.label }}
             <span class="inline-block transition-transform group-hover:translate-x-1">→</span>

@@ -14,7 +14,7 @@ const facts = [
 </script>
 
 <template>
-  <section id="connectivity" class="ground-dark py-24 sm:py-28">
+  <section id="connectivity" class="ground-raised py-24 sm:py-28">
     <div class="wrap">
       <h2 class="h2 max-w-[22ch] mb-4">Built on direct exchange connectivity.</h2>
 

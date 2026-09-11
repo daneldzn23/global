@@ -3,7 +3,7 @@ const regions = ['Americas', 'Europe', 'Asia']
 </script>
 
 <template>
-  <section id="careers" class="ground-dark py-24 sm:py-28">
+  <section id="careers" class="ground-raised py-24 sm:py-28">
     <div class="wrap grid gap-12 lg:grid-cols-[1fr_minmax(0,20rem)] lg:gap-20">
       <div>
         <h2 class="h2 max-w-[18ch] mb-5">The people behind the platforms.</h2>

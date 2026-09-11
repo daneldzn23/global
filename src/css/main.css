@@ -30,8 +30,8 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--color-lite);
-  color: var(--color-ink-on-lite);
+  background: var(--color-ink);
+  color: var(--color-text);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
@@ -44,12 +44,15 @@ body {
 
 /* Type. Plain, single-weight headings — no two-tone, no accent clause. */
 
+/* No `margin: 0` here — it outranks Tailwind's mb-* utilities and silently
+   discards any spacing set in the markup. Headings are already reset by
+   Tailwind's preflight. */
+
 .h1 {
   font-size: clamp(2.25rem, 4.6vw, 3.5rem);
   line-height: 1.08;
   letter-spacing: -0.022em;
   font-weight: 500;
-  margin: 0;
 }
 
 .h2 {
@@ -57,14 +60,12 @@ body {
   line-height: 1.16;
   letter-spacing: -0.018em;
   font-weight: 500;
-  margin: 0;
 }
 
 .h3 {
   font-size: 1.0625rem;
   line-height: 1.35;
   font-weight: 500;
-  margin: 0;
 }
 
 .lead {
@@ -85,28 +86,20 @@ body {
   letter-spacing: -0.01em;
 }
 
-/* Structural gradient: a section ground, never a glow behind a card. */
+/* Two dark grounds. Section rhythm comes from a slight shift in depth,
+   not from flipping between a light and a dark theme. */
 
-/* The dark band eases in from the tint above it rather than cutting hard. */
-.ground-dark {
-  background:
-    linear-gradient(180deg, #0A1119 0%, #0E1721 60%, #0A1119 100%);
+.ground-base {
+  background: var(--color-ink);
   color: var(--color-text);
-  position: relative;
-}
-.ground-dark::before {
-  content: "";
-  position: absolute;
-  inset-inline: 0;
-  top: 0;
-  height: 96px;
-  background: linear-gradient(180deg, var(--color-lite) 0%, rgb(10 17 25 / 0) 100%);
-  opacity: .18;
-  pointer-events: none;
 }
 
-.ground-tint {
-  background: linear-gradient(180deg, #FFFFFF 0%, var(--color-lite) 100%);
+.ground-raised {
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow:
+    inset 0 1px 0 rgb(230 237 243 / 0.06),
+    inset 0 -1px 0 rgb(230 237 243 / 0.06);
 }
 
 /* A hairline that fades out, used to separate bands without boxing them in.
@@ -119,14 +112,8 @@ body {
   border: 0;
   margin: 0;
   background-image: linear-gradient(90deg,
-    rgb(11 20 28 / 0.16) 0%,
-    rgb(11 20 28 / 0.07) 45%,
-    rgb(11 20 28 / 0) 100%);
-}
-.ground-dark .hairline {
-  background-image: linear-gradient(90deg,
-    rgb(230 237 243 / 0.18) 0%,
-    rgb(230 237 243 / 0.07) 45%,
+    rgb(230 237 243 / 0.20) 0%,
+    rgb(230 237 243 / 0.08) 45%,
     rgb(230 237 243 / 0) 100%);
 }
 
