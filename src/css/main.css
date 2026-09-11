@@ -73,6 +73,13 @@ body {
   font-weight: 500;
 }
 
+.hero-gradient {
+  background: linear-gradient(90deg, var(--color-blue), var(--color-blue-bright));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
 .lead {
   font-size: 1.125rem;
   line-height: 1.6;
